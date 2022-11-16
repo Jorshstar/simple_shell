@@ -8,7 +8,6 @@
  * @data: data structure
  * Return: no return
  */
-
 void check_env(r_var **h, char *in, data_shell *data)
 {
 	int row, chr, j, lval;
@@ -31,7 +30,7 @@ void check_env(r_var **h, char *in, data_shell *data)
 			else
 				break;
 		}
-
+	}
 
 	for (j = 0; in[j]; j++)
 	{
@@ -51,7 +50,6 @@ void check_env(r_var **h, char *in, data_shell *data)
  * @data: data structure
  * Return: no return
  */
-
 int check_vars(r_var **h, char *in, char *st, data_shell *data)
 {
 	int i, lst, lpd;
@@ -94,7 +92,6 @@ int check_vars(r_var **h, char *in, char *st, data_shell *data)
  * @nlen: new length
  * Return: replaced string
  */
-
 char *replaced_input(r_var **head, char *input, char *new_input, int nlen)
 {
 	r_var *indx;
@@ -145,7 +142,6 @@ char *replaced_input(r_var **head, char *input, char *new_input, int nlen)
  * @datash: data structure
  * Return: replaced string
  */
-
 char *rep_var(char *input, data_shell *datash)
 {
 	r_var *head, *indx;
@@ -154,6 +150,7 @@ char *rep_var(char *input, data_shell *datash)
 
 	status = aux_itoa(datash->status);
 	head = NULL;
+
 	olen = check_vars(&head, input, status, datash);
 
 	if (head == NULL)
@@ -161,6 +158,7 @@ char *rep_var(char *input, data_shell *datash)
 		free(status);
 		return (input);
 	}
+
 	indx = head;
 	nlen = 0;
 
@@ -169,12 +167,17 @@ char *rep_var(char *input, data_shell *datash)
 		nlen += (indx->len_val - indx->len_var);
 		indx = indx->next;
 	}
+
 	nlen += olen;
+
 	new_input = malloc(sizeof(char) * (nlen + 1));
 	new_input[nlen] = '\0';
+
 	new_input = replaced_input(&head, input, new_input, nlen);
+
 	free(input);
 	free(status);
 	free_rvar_list(&head);
+
 	return (new_input);
 }
