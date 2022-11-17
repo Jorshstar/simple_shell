@@ -87,7 +87,6 @@ void add_nodes(sep_list **head_s, line_list **head_l, char *input)
  * @datash: data structure
  * Return: no return
  */
-
 void go_next(sep_list **list_s, line_list **list_l, data_shell *datash)
 {
 	int loop_sep;
@@ -130,7 +129,6 @@ void go_next(sep_list **list_s, line_list **list_l, data_shell *datash)
  * @input: input string
  * Return: 0 to exit, 1 to continue
  */
-
 int split_commands(data_shell *datash, char *input)
 {
 
@@ -144,7 +142,7 @@ int split_commands(data_shell *datash, char *input)
 	add_nodes(&head_s, &head_l, input);
 
 	list_s = head_s;
-	list_l = head_l
+	list_l = head_l;
 
 	while (list_l != NULL)
 	{
@@ -176,9 +174,8 @@ int split_commands(data_shell *datash, char *input)
  * @input: input string.
  * Return: string splitted.
  */
-
 char **split_line(char *input)
-
+{
 	size_t bsize;
 	size_t i;
 	char **tokens;
@@ -203,14 +200,12 @@ char **split_line(char *input)
 			tokens = _reallocdp(tokens, i, sizeof(char *) * bsize);
 			if (tokens == NULL)
 			{
-				write(STDERR_FILENO, ": allocation error\n", 18)
-					;
+				write(STDERR_FILENO, ": allocation error\n", 18);
 				exit(EXIT_FAILURE);
 			}
 		}
 		token = _strtok(NULL, TOK_DELIM);
 		tokens[i] = token;
-
 	}
 
 	return (tokens);
