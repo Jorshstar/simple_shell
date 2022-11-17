@@ -1,3 +1,4 @@
 # SIMPLE SHELL PROJECT
-This is a Simple Shell Project Done By [Jozz77][https://github.com] and [Jorshstar][https://github.com]
-
+# Description
+. Who designed and implemented the original Unix operating system
+. Who wrote the first version of the UNIX shell
